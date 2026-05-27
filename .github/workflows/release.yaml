@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     env:
-      RP2040_FIRMWARE_VERSION: 0.5.1
+      RP2040_FIRMWARE_VERSION: 0.6.5
 
     steps:
       - name: Checkout repository
@@ -63,6 +63,8 @@ jobs:
           mkdir -p _releases
           wget -O _releases/tc2-firmware.sha256 https://github.com/TheCacophonyProject/tc2-firmware/releases/download/v${RP2040_FIRMWARE_VERSION}/tc2-firmware.sha256
           wget -O _releases/tc2-firmware https://github.com/TheCacophonyProject/tc2-firmware/releases/download/v${RP2040_FIRMWARE_VERSION}/tc2-firmware
+          wget -O _releases/tc2-firmware-erase-flash.sha256 https://github.com/TheCacophonyProject/tc2-firmware/releases/download/v${RP2040_FIRMWARE_VERSION}/tc2-firmware-erase-flash.sha256
+          wget -O _releases/tc2-firmware-erase-flash https://github.com/TheCacophonyProject/tc2-firmware/releases/download/v${RP2040_FIRMWARE_VERSION}/tc2-firmware-erase-flash
 
       - name: Build the project
         run: cargo build --release --target=aarch64-unknown-linux-musl
